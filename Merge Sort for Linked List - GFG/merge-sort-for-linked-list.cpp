@@ -29,116 +29,116 @@ struct Node
 class Solution{
   public:
     //Function to sort the given linked list using Merge Sort.
-    // void insertAtTail(Node*&tail,Node*temp)
-    // {
-    //     tail ->next = temp;
-    //     tail = temp;
-    
-    // }
-    // Node* merge(Node* head1,Node* head2)
-    // {
-    //     Node* head = new Node(-1);
-    //     Node* tail = head;
-        
-    //     Node* temp1 = head1;
-    //     Node* temp2 = head2;
-        
-    //     while(temp1 != NULL && temp2 != NULL)
-    //     {
-    //         int num1 = temp1->data;
-    //         int num2 = temp2->data;
-            
-    //         if(num1 < num2)
-    //         {
-    //             insertAtTail(tail,temp1);
-    //             temp1 = temp1->next;
-                
-    //         }
-    //         else 
-    //         {
-    //             insertAtTail(tail,temp2);
-    //             temp2 = temp2->next;
-                
-    //         }
-    //     }
-          
-            
-    //     while(temp1 != NULL)
-    //     {
-    //     insertAtTail(tail,temp1);
-    //     temp1 = temp1->next;
-    //     }
-    //     while(temp2 != NULL)
-    //     {
-    //     insertAtTail(tail,temp2);
-    //     temp2 = temp2->next;
-    //     }
-        
-    //     head = head->next;
-    //     return head;
-    // }
-    
-     Node* solve(Node* head1, Node* head2)
-{
-    if(head1 ->next == NULL)
+    void insertAtTail(Node*&tail,Node*temp)
     {
-        head1->next = head2;
-        return head1;
+        tail ->next = temp;
+        tail = temp;
+    
     }
-    Node* curr1 = head1;
-    Node* next1 = head1->next;
-    Node* curr2 = head2;
-    Node* next2 = head2->next;
- 
- 
-    
-    while(next1 != NULL && curr2 != NULL)
+    Node* merge(Node* head1,Node* head2)
     {
+        Node* head = new Node(-1);
+        Node* tail = head;
         
-        if((curr2->data >= curr1->data) && (curr2->data <= next1->data))
+        Node* temp1 = head1;
+        Node* temp2 = head2;
+        
+        while(temp1 != NULL && temp2 != NULL)
         {
-            curr1->next = curr2;
-            next2 = curr2->next;
-            curr2->next = next1;
+            int num1 = temp1->data;
+            int num2 = temp2->data;
             
-            curr1 = curr2;
-            curr2 = next2;
-            
-        }
-        else
-        {
-            curr1 = curr1->next;
-            next1 = next1->next;
-            
-            if(next1 == NULL)
+            if(num1 < num2)
             {
-                curr1->next = curr2;
-                return head1;
+                insertAtTail(tail,temp1);
+                temp1 = temp1->next;
+                
+            }
+            else 
+            {
+                insertAtTail(tail,temp2);
+                temp2 = temp2->next;
+                
             }
         }
+          
+            
+        while(temp1 != NULL)
+        {
+        insertAtTail(tail,temp1);
+        temp1 = temp1->next;
+        }
+        while(temp2 != NULL)
+        {
+        insertAtTail(tail,temp2);
+        temp2 = temp2->next;
+        }
         
+        head = head->next;
+        return head;
     }
     
+//      Node* solve(Node* head1, Node* head2)
+// {
+//     if(head1 ->next == NULL)
+//     {
+//         head1->next = head2;
+//         return head1;
+//     }
+//     Node* curr1 = head1;
+//     Node* next1 = head1->next;
+//     Node* curr2 = head2;
+//     Node* next2 = head2->next;
+ 
+ 
     
-    return head1;
-}
+//     while(next1 != NULL && curr2 != NULL)
+//     {
+        
+//         if((curr2->data >= curr1->data) && (curr2->data <= next1->data))
+//         {
+//             curr1->next = curr2;
+//             next2 = curr2->next;
+//             curr2->next = next1;
+            
+//             curr1 = curr2;
+//             curr2 = next2;
+            
+//         }
+//         else
+//         {
+//             curr1 = curr1->next;
+//             next1 = next1->next;
+            
+//             if(next1 == NULL)
+//             {
+//                 curr1->next = curr2;
+//                 return head1;
+//             }
+//         }
+        
+//     }
+    
+    
+//     return head1;
+// }
 
-Node* merge(Node* head1, Node* head2)  
-{  
-    // code here
+// Node* merge(Node* head1, Node* head2)  
+// {  
+//     // code here
     
-    if(head1->data >= head2->data)
-    {
-        return solve(head2,head1);
+//     if(head1->data >= head2->data)
+//     {
+//         return solve(head2,head1);
         
-    }
-    else
-    {
-        return solve(head1,head2);
+//     }
+//     else
+//     {
+//         return solve(head1,head2);
         
-    }
+//     }
     
-}   
+// }   
     Node* findMid(Node* head)
     {
         Node*slow = head;
